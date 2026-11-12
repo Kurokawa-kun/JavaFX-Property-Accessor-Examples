@@ -1,0 +1,140 @@
+plugins
+{
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'io.github.kurokawa_kun.javafx-property-accessor-plugin' version '0.9.0'
+}
+
+repositories
+{
+    mavenLocal() //  ローカルMavenリポジトリからプラグインを探す
+    gradlePluginPortal() // 公式ポータル
+}
+
+java
+{
+    toolchain
+    {
+        languageVersion = JavaLanguageVersion.of(26)
+    }
+}
+
+javafx
+{
+    version = "26"
+    modules = ['javafx.controls']
+}
+
+tasks.withType(JavaCompile)
+{
+    //  詳細メッセージを表示するオプション
+    options.compilerArgs += '-Averbose=true'
+}
+
+application
+{
+    mainClass = 'App1'  //  gradle runの最初だけを実行させるためにこの定義が必要
+}
+
+//  タスク定義
+tasks.named('build')
+{
+    //  gradle build実行時にメッセージを表示するだけ
+    doLast
+    {
+        println("If you would like to compile each source file separately, you also can call 'gradle compileApp1' - 'gradle compileApp5'.")
+    }
+}
+
+//  ファイルを個別にコンパイルするタスク
+tasks.register('compileApp1', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App1.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
+tasks.register('compileApp2', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App2.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
+tasks.register('compileApp3', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App3.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
+tasks.register('compileApp4', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App4.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
+tasks.register('compileApp5', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App5.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
+//  gradle runを実行できないようにする
+tasks.named('run')
+{
+    group = 'application'
+    doFirst
+    {
+        //  エラーメッセージを出力してgradle runを中止する
+        throw new GradleException("Please try 'gradle runApp1' - 'gradle runApp5' instead of 'gradle run'.")
+    }
+}
+
+//  ファイルを個別に実行するタスク
+tasks.register('runApp1', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App1'
+}
+
+tasks.register('runApp2', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App2'
+}
+
+tasks.register('runApp3', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App3'
+}
+
+tasks.register('runApp4', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App4'
+}
+
+tasks.register('runApp5', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App5'
+}
