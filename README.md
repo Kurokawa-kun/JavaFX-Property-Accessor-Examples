@@ -23,13 +23,12 @@ repositories
 
 ```
 デバッグ用の詳細メッセージを出力する場合は build.gradle に以下の記述も追加してください。
-``` build.gradle
+```
 tasks.withType(JavaCompile)
 {
     options.compilerArgs += '-Averbose=true'
 }
 ```
-
 Gradleがローカルのリポジトリからプラグインを探せるよう settings.gradle に以下の記述を追加してください。
 ```
 pluginManagement
@@ -56,7 +55,12 @@ gradle build
 ```
 ソースファイルを個別にコンパイルすることも可能です。
 ```
-gradle compileApp1 ～ compileApp5
+gradle compileApp1
+gradle compileApp2
+gradle compileApp3
+gradle compileApp4
+gradle compileApp5
+gradle compileApp6
 ```
 
 ### プログラムの実行
@@ -67,6 +71,7 @@ gradle runApp2
 gradle runApp3
 gradle runApp4
 gradle runApp5
+gradle runApp6
 ```
 ※ App5はコンパイルエラーとなる例を示したものなので実行しても意味はないですが…💧
 

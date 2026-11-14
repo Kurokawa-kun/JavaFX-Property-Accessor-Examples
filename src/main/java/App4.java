@@ -1,23 +1,53 @@
 import io.github.kurokawa_kun.annotation.javafx.*;
-import io.github.kurokawa_kun.annotation.javafx.type.Access;
+import java.util.*;
+import java.nio.file.Files;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.beans.property.*;
-import javafx.collections.FXCollections;
 
 /*
-    サンプルプログラム4：ビルドは成功するが警告メッセージが出力される
+    サンプルプログラム4：型情報を持つプロパティ
 */
 public class App4
 {
     @FxGetter
-    public IntegerProperty publicInteger = new SimpleIntegerProperty(5);  //  プロパティがpublic
-    @FxGetter
-    private IntegerProperty StartsUpperCase = new SimpleIntegerProperty(5);  //  名前が大文字で始まっている
+    @FxSetter
     @FxProperty
-    private IntegerProperty endsWithProperty = new SimpleIntegerProperty(5);  //  名前が"Property"で終わっている
-    @FxGetter(access = Access.PRIVATE)
-    protected IntegerProperty lowerAccessPrivileges = new SimpleIntegerProperty(5);  //  プロパティよりアクセス権限の低いメソッド
-    @FxProperty(readOnly = true)
-    private ListProperty<String> mutable = new SimpleListProperty<>(FXCollections.observableArrayList());  //  ミュータブルな値をReadOnlyPropertyに変換している
+    private MapProperty<String, Image> testMap;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private ListProperty<Files> testList;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private SetProperty<Color> testSet;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private ObjectProperty<Font> testObject;
+    
+    @FxGetter
+    @FxProperty
+    private SetProperty<? extends Long> testExtends;
+    
+    @FxGetter
+    @FxProperty
+    private SetProperty<? super Long> testSuper;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private ListProperty<String[]> testArray;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private MapProperty<Map<Map<String, Integer>, Set<Object>>, ListProperty<Map<String, Integer>>> complicated;
     
     public static void main(String[] args)
     {

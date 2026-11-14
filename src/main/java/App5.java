@@ -1,21 +1,23 @@
 import io.github.kurokawa_kun.annotation.javafx.*;
+import io.github.kurokawa_kun.annotation.javafx.type.Access;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 
 /*
-    サンプルプログラム5：コンパイルエラーになるパターン
+    サンプルプログラム5：ビルドは成功するが警告メッセージが出力される
 */
 public class App5
 {
-    //  ※ 以下はすべてコンパイルエラーになります。
-    
-    /*
     @FxGetter
-    public int primitiveValue = 50;  //  プリミティブ型
+    public IntegerProperty publicInteger = new SimpleIntegerProperty(5);  //  プロパティがpublic
     @FxGetter
-    public Object notJavaFxProperty;  //  JavaFXのプロパティではない
-    @FxSetter
-    public ReadOnlyIntegerProperty readOnlyProperty;  //  ReadOnlyPropertyにsetterをつけようとしている
-    */
+    private IntegerProperty StartsUpperCase = new SimpleIntegerProperty(5);  //  名前が大文字で始まっている
+    @FxProperty
+    private IntegerProperty endsWithProperty = new SimpleIntegerProperty(5);  //  名前が"Property"で終わっている
+    @FxGetter(access = Access.PRIVATE)
+    protected IntegerProperty lowerAccessPrivileges = new SimpleIntegerProperty(5);  //  プロパティよりアクセス権限の低いメソッド
+    @FxProperty(readOnly = true)
+    private ListProperty<String> mutable = new SimpleListProperty<>(FXCollections.observableArrayList());  //  ミュータブルな値をもつプロパティをReadOnlyPropertyに変換している
     
     public static void main(String[] args)
     {

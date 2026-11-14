@@ -92,6 +92,15 @@ tasks.register('compileApp5', JavaCompile)
     options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
 }
 
+tasks.register('compileApp6', JavaCompile)
+{
+    group = 'build'
+    source = fileTree(dir: 'src/main/java', include: 'App6.java')
+    classpath = sourceSets.main.compileClasspath
+    destinationDirectory = layout.buildDirectory.dir('classes/java/main')
+    options.annotationProcessorPath = sourceSets.main.annotationProcessorPath
+}
+
 //  gradle runを実行できないようにする
 tasks.named('run')
 {
@@ -99,7 +108,7 @@ tasks.named('run')
     doFirst
     {
         //  エラーメッセージを出力してgradle runを中止する
-        throw new GradleException("Please try 'gradle runApp1' - 'gradle runApp5' instead of 'gradle run'.")
+        throw new GradleException("Please try 'gradle runApp1' - 'gradle runApp6' instead of 'gradle run'.")
     }
 }
 
@@ -137,4 +146,11 @@ tasks.register('runApp5', JavaExec)
     group = 'application'
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'App5'
+}
+
+tasks.register('runApp6', JavaExec)
+{
+    group = 'application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'App6'
 }
