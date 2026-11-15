@@ -1,4 +1,5 @@
 import io.github.kurokawa_kun.annotation.javafx.*;
+import io.github.kurokawa_kun.annotation.javafx.type.*;
 import java.util.*;
 import java.nio.file.Files;
 import javafx.scene.image.Image;
@@ -36,10 +37,6 @@ public class App4
     private SetProperty<? extends Long> testExtends;
     
     @FxGetter
-    @FxProperty
-    private SetProperty<? super Long> testSuper;
-    
-    @FxGetter
     @FxSetter
     @FxProperty
     private ListProperty<String[]> testArray;
@@ -47,7 +44,12 @@ public class App4
     @FxGetter
     @FxSetter
     @FxProperty
-    private MapProperty<Map<Map<String, Integer>, Set<Object>>, ListProperty<Map<String, Integer>>> complicated;
+    private ListProperty<Map<String, Object>> complicated;
+    
+    @FxGetter
+    @FxSetter
+    @FxProperty
+    private MapProperty<Map<Map<String, Integer>, Set<Object>>, ListProperty<Map<String, Integer>>> tooComplicated;
     
     public static void main(String[] args)
     {

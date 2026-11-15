@@ -1,4 +1,5 @@
 import io.github.kurokawa_kun.annotation.javafx.*;
+import io.github.kurokawa_kun.annotation.javafx.type.*;
 import java.util.*;
 import javafx.scene.paint.Color;
 import java.net.URI;
@@ -62,20 +63,20 @@ public class App3
     public App3()
     {
         InnerClass innerClass = new InnerClass();
-        System.out.println("Current value of innerFloat:" + innerClass.getInnerFloat());
+        System.out.println("Current value of innerFloat: " + innerClass.getInnerFloat());
         innerClass.setInnerFloat(35.00f);
-        System.out.println("Current value of innerFloat:" + innerClass.getInnerFloat());
+        System.out.println("Current value of innerFloat: " + innerClass.getInnerFloat());
         
         System.out.printf("The red value of 'orange'  : %.2f\n", TestEnum.ORANGE.getColor().getRed());
         System.out.printf("The green value of 'orange': %.2f\n", TestEnum.ORANGE.getColor().getGreen());
         System.out.printf("The blue value of 'orange' : %.2f\n", TestEnum.ORANGE.getColor().getBlue());                
         
-        System.out.println("Current value of TestRecord.recordInteger:" + TestRecord.getRecordInteger());
+        System.out.println("Current value of TestRecord.recordInteger: " + TestRecord.getRecordInteger());
         TestRecord.setRecordInteger(15);
-        System.out.println("Current value of TestRecord.recordInteger:" + TestRecord.getRecordInteger());
+        System.out.println("Current value of TestRecord.recordInteger: " + TestRecord.getRecordInteger());
         
-        System.out.println("Current value of TestInterface.showUri:" + TestInterface.getUri());
-        System.out.println("Current value of TestInterface.showUuid:" + TestInterface.getUuid());
+        System.out.println("Current value of TestInterface.showUri : " + TestInterface.getUri());
+        System.out.println("Current value of TestInterface.showUuid: " + TestInterface.getUuid());
     }
     
     public static void main(String[] args)

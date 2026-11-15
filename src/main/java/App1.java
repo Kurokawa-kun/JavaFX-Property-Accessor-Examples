@@ -1,4 +1,5 @@
 import io.github.kurokawa_kun.annotation.javafx.*;
+import io.github.kurokawa_kun.annotation.javafx.type.*;
 import javafx.beans.property.*;
 
 /*
@@ -19,10 +20,10 @@ public class App1
     {
         //  ソースコード中に存在しない（App1クラスが保持していない）メソッドを呼び出している
         boundFontSize.bind(this.fontSizeProperty());        
-        System.out.println("Current font size:" + this.getFontSize());
+        System.out.println("Current font size: " + this.getFontSize());
         this.setFontSize(30);
-        System.out.println("Current font size:" + this.getFontSize());
-        System.out.println("Current bound font size:" + this.boundFontSize.get());
+        System.out.println("Current font size: " + this.getFontSize());
+        System.out.println("Current bound font size: " + this.boundFontSize.get());
     }
     
     public static void main(String[] args)
