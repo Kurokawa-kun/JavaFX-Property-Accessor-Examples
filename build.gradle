@@ -42,7 +42,7 @@ tasks.named('build')
     //  gradle build実行時にメッセージを表示するだけ
     doLast
     {
-        println("If you would like to compile each source file separately, you also can call 'gradle compileApp1' - 'gradle compileApp5'.")
+        println("If you would like to compile each source file separately, you also can call 'gradle compileApp1' - 'gradle compileApp6'.")
     }
 }
 
